@@ -21,8 +21,14 @@ Puppet::Type.type(:git).provide :git do
 
   def clone
     opt = []
-    if @resource[:bare] == :bare
+    if @resource[:bare] == :true
       opt << "--bare"
+    end
+
+    if @resource[:shared] == :true
+      opt << "--shared=group"
+    elsif @resource[:shared] == :true
+      opt << "--shared=all"
     end
 
     if source
