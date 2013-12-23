@@ -66,7 +66,7 @@ module Puppet
     end
 
     newparam(:bare) do
-      desc "Is the repo a brea repo or not. Defaults to `nonbare`"
+      desc "Is this a bare repo? Defaults to `nonbare`"
 
       defaultto :false
       
@@ -75,6 +75,20 @@ module Puppet
       # Alias the values.
       aliasvalue(:bare, :true)
       aliasvalue(:nonbare, :false)
+    end
+
+    newparam(:shared) do
+      desc "Is this a shared repo? Defaults to `false`"
+
+      defaultto :false
+
+      newvalues(:true, :false, :all)
+
+      # Alias the values.
+      aliasvalue(:umask, :false)
+      aliasvalue(:group, :true)
+      aliasvalue(:world, :all)
+      aliasvalue(:everybody, :all)
     end
 
     autorequire(:file) do
