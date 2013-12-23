@@ -23,7 +23,7 @@ class git {
 
   $pkg = $::operatingystem ? {
     /(?i:Debian|Ubuntu)/ => ['git-core'],
-    default => ['git'],
+    default              => ['git'],
   }
 
   package { $pkg: ensure => installed }
