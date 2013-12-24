@@ -59,8 +59,9 @@ module Puppet
           fail Puppet::Error, "Repo paths must be fully qualified, not '#{value}'"
         end
         unless File.exists?("#{value}/.git/config") or 
+               File.exists?("#{value}.git/config") or
                File.exists?("#{value}/config")
-          fail Puppet::Error, "Repo path do not point to a git repo"
+          fail Puppet::Error, "Repo path does not point to a git repo"
         end
       end
 
